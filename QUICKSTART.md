@@ -1,7 +1,7 @@
 # Lumentum HR AI System - Quickstart Guide
 
 ## Overview
-This project implements an AI-powered HR analytics system for Lumentum, featuring predictive workforce analytics, natural language to SQL querying, and a Streamlit dashboard.
+This project implements an AI-powered HR analytics mock system for Lumentum, featuring predictive workforce analytics, natural language to SQL querying, and a Streamlit dashboard.
 
 ## Prerequisites
 - Python 3.8+
