@@ -10,19 +10,42 @@ See [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md) for technical design rationale an
 
 ## 📊 Features
 
-### Predictive Analytics
+### Executive Dashboard
+- Real-time workforce health metrics and KPIs
+- Flight risk distribution visualization (donut chart)
+- Department-level risk analysis with stacked bar charts
+- Key insights boxes with actionable intelligence
+- Professional gradient styling and responsive layout
+
+### Detailed Analytics
+- **High Risk Deep Dive**: Identify and track at-risk employees with retention strategies
+- **Tenure Analysis**: Scatter plot showing correlation between employment length and turnover risk
+- **Salary Analysis**: Box plots revealing compensation patterns across departments and risk levels
+- **Department Comparison**: Side-by-side metrics for cross-departmental insights
+
+### AI Assistant Tab
+- Natural language query interface ("Ask your data lake")
+- AI-powered SQL generation from plain English questions
+- Real-time database query execution
+- Example questions for user guidance
+- Enhanced error handling and result formatting
+
+### Predictive Analytics Engine
 - Machine learning model predicting employee turnover risk
 - Risk categorization (High/Medium/Low) with probability scores
-- Interactive dashboards with KPIs and visualizations
+- Flight risk probability scoring (0-1 scale)
+- Random Forest with SMOTE for imbalanced classification
 
 ### Natural Language to SQL
 - AI-powered query generation from plain English questions
 - Direct database execution with results display
-- Context-aware SQL construction using LangChain
+- Context-aware SQL construction using LangChain + OpenAI GPT-3.5-turbo
+- Automatic schema awareness and query optimization
 
 ### RAG-Enhanced Insights
 - Vector database of exit interview text
 - Semantic search for qualitative insights
+- FAISS-powered similarity search
 - Integration with predictive analytics
 
 ## 🛠️ Tech Stack

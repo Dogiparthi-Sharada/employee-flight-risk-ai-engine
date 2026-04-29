@@ -17,11 +17,21 @@ def query_database_with_ai(user_question):
     llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
     
     # Strict prompt engineering for the AI (Now includes top_k safety guardrail)
-    template = '''Given an input question, create a syntactically correct SQLite query.
-    Unless the user specifies otherwise, limit your query to at most {top_k} results.
-    Only use the following tables: {table_info}
-    Question: {input}'''
-    prompt = PromptTemplate.from_template(template)
+    template = '''Given an input question, create a syntactically correct SQLite query to query a SQLite database.
+
+You have access to tools for interacting with a SQLite database. Only use the below tools. Only use the information returned by the below tools to construct your final answer.
+
+Unless told otherwise, do not make any assumptions about what the table looks like and what columns exist.
+Get the schema and sample data first.
+
+If the question does not seem related to the database schema, just return "I don\'t know" as the answer.
+
+Here is the relevant table info: {table_info}
+
+Question: {input}
+SQLQuery:'''
+    prompt = PromptTemplate(input_variables=['input', 'top_k', 'table_info'], template=template)
+    prompt = prompt.partial(top_k=10)
     
     # Create the SQL construction chain
     execute_query = create_sql_query_chain(llm, db, prompt=prompt)
